@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Mesos - Elastically Scalable Operations, Simplified.</title>
+		<title>Mesos - Resource-efficient distributed systems.</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="description" content="">
 		<meta name="author" content="Adam Bordelon, Niklas Quarfot Nielsen">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,43 +32,19 @@
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
-
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
 	</head>
 
 	<body>
 
 		<div class="reveal">
-
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
         <section data-background="assets/front-page.jpg">
 					<h1>Mesos</h1>
-					<h3>Elastically Scalable Operations,<br/>Simplified.</h3>
+					<h3>Resource-efficient distributed systems</h3>
 					<p>
 						<small><a href="mailto:adam@mesosphere.io">Adam Bordelon</a></small>
 						<small><a href="mailto:niklas@mesosphere.io">Niklas Quarfot Nielsen</a></small>
 					</p>
-				</section>
-
-        <section data-background="assets/front-page.jpg">
-					<h2>Go launch a cluster</h2>
-          <img src="assets/dc.png"/>
-          <h3><a href="http://elastic.mesosphere.io">elastic.mesosphere.io</a></h3>
-
-					<aside class="notes"></aside>
-				</section>
-
-        <section>
-          <img src="assets/elastic.png"/>
-					<aside class="notes"></aside>
-				</section>
-
-        <section data-background="assets/office.png">
-					<h2>We are Mesosphere</h2>
-					<aside class="notes"></aside>
 				</section>
 
         <section data-background="assets/front-page.jpg">
@@ -90,14 +66,50 @@
         </section>
 
         <section>
-					<h2>Today is about Mesos <i class="fa fa-heart fa-inverse"></i> Ops</h2>
+          <h2>Why are we here?</h2>
+          <!-- <h3 class="fragment"></h3> -->
+          <table>
+            <tr class="fragment"><td>2009</td><td>Grew out of Berkeley</td></tr>
+            <tr class="fragment"><td>2010</td><td>Adopted by Twitter</td></tr>
+            <tr class="fragment"><td>2013</td><td>Adopted by Airbnb and OpenTable</td></tr>
+            <tr class="fragment"><td>2014</td><td>Adopted by Netflix, eBay, X Fortune 100 companies</td></tr>
+          </table>
 
-					<aside class="notes"></aside>
-				</section>
+          <br/>
+          <p class="fragment">Different roots but approaches are converging</p>
+
+          <aside class="notes">
+            Mesos comes out of a different environment than traditional HPC schedulers
+
+            != MPI scheduler
+
+            Caveat: enterprise. But interprise setups are reaching a scale that is very similar to traditional (or previous scales) of HPC.
+
+            Grew up in silos, but are converging. It goes both ways.
+
+            Academia in concurrency run-times to big data to enterprise.
+          </aside>
+        </section>
 
         <section>
-          <div style="font-size: 9em;">
+          <h2>What similarities?</h2>
+          <p class="fragment">Inexpensive hardware</p>
+          <p class="fragment">Poor unreliable networking</p>
+          <p class="fragment">Heterogeneous hardware</p> 
+          <p class="fragment">Absolutely need to be able to deal with failure!</p>
+          <aside class="notes">
+          </aside>
+        </section>
 
+        <section>
+          <h2>Enterprise scale is growing up</h2>
+          <p class="fragment"><strike>In</strike>expensive hardware</p>
+          <p class="fragment">Now need to worry about 100.000+ node scale across geographical locations</p>
+          <p class="fragment">Started to care <u>a lot</u> about utilization and better use of their data centers</p>
+        </section>
+<!--
+        <section>
+          <div style="font-size: 9em;">
             <div style="display: inline-block;">
               <p><i class="fa fa-lightbulb-o"></i></p>
               <p style="font-size: 30px;">The idea</p>
@@ -112,17 +124,14 @@
               <p><i class="fa fa-suitcase"></i></p>
               <p style="font-size: 30px;">Who is using it</p>
             </div>
-
           </div>
-
 					<aside class="notes"></aside>
 				</section>
-
+-->
         <section data-background="assets/ibm-360.jpg">
-        <div style="background-color:rgba(0, 0, 0, 0.5)">
-					<h2>Let us take a look at how clusters run today</h2>
-        </div>
-
+          <div style="background-color:rgba(0, 0, 0, 0.5)">
+				  	<h2>Let us take a look at how data-centers are run today</h2>
+          </div>
 					<aside class="notes"></aside>
 				</section>
 
@@ -187,13 +196,11 @@
 				</section>
 
         <section>
-          <h2>Status quo is static partitioning</h2>
-          <h2 class="fragment">Imagine if your computer ran like this...</h2>
+          <h3>Status quo is static partitioning</h3>
+          <!-- Static partitioning (graphic) -->
+          <img style="height: 100%;" src="assets/static-partition.png"/>
 					<aside class="notes"></aside>
 				</section>
-
-        <section data-background="assets/windows.png">
-        </section>
 
         <section>
           <h2>Static partitioning does not scale</h2>
@@ -228,12 +235,6 @@
         </section>
 
         <section>
-          <h2>Mesos enables dynamic resource sharing</h2>
-          <iframe style="width: 100%; height: 15em;" src="http://mesosphere.io/simulator/"></iframe>
-					<aside class="notes"></aside>
-				</section>
-
-        <section>
           <h2>Mesos is another layer of abstraction</h2>
           <h2 class="fragment">Below a PaaS</h2>
           <h2 class="fragment">Above an IaaS</h2>
@@ -264,20 +265,8 @@
 					<aside class="notes"></aside>
 				</section>
 
-<!--
-Overview slide (with wires) comes here
         <section>
-          <table>
-            <tr class="fragment">
-              <td>
-                <h3><i class="fa fa-sitemap"></i></h3>
-              </td>
-            </tr>
-          </table>
-        </section>
--->
-        <section>
-          <h2>Making life easier for the data center operator</h2>
+          <h2>Makes it easier to operate a data center</h2>
           <table>
           <tr>
             <td><h3><i class="fa fa-sitemap"></i></h3></td><td><h3>Multi-tenancy</h3></td>
@@ -304,7 +293,7 @@ Overview slide (with wires) comes here
 
         <!-- Marathon walk through -->
         <section>
-          <h2>Say hi to Marathon</h2>
+          <h2>Marathon is a scheduler for long-lived tasks</h2>
           <img src="assets/marathon-logo.jpg"/>
 					<aside class="notes"></aside>
 				</section>
@@ -328,7 +317,7 @@ Overview slide (with wires) comes here
 				</section>
 
         <section>
-          <h2>The Mesos ecosystem is growing</h2>
+          <h2>A scheduler for each work-load profile</h2>
           <img src="assets/frameworks.png"/>
           <aside class="notes"></aside>
         </section>
@@ -338,23 +327,11 @@ Overview slide (with wires) comes here
           <aside class="notes"></aside>
         </section>
 
+        <!-- Super computer vs Data center Operating System -->
+
         <section>
-          <div style="font-size: 9em;">
-            <div style="display: inline-block; opacity:0.5;">
-              <p><i class="fa fa-lightbulb-o"></i></p>
-              <p style="font-size: 30px;">The idea</p>
-            </div>
-
-            <div style="display: inline-block;">
-              <p><i class="fa fa-cogs"></i></p>
-              <p style="font-size: 30px;">How it works</p>
-            </div>
-
-            <div style="display: inline-block; opacity:0.5;">
-              <p><i class="fa fa-suitcase"></i></p>
-              <p style="font-size: 30px;">Who is using it</p>
-            </div>
-          </div>
+          <p style="font-size: 100px;"><i class="fa fa-cogs"></i></p>
+          <h2>How does it work?</h2>
 					<aside class="notes"></aside>
 				</section>
 
@@ -385,13 +362,23 @@ Overview slide (with wires) comes here
             </td>
           </tr>
           </table>
-          <aside class="notes">NIKLAS continues</aside>
           <aside class="notes">What happens if request cannot be satisfied? Partial match, block?</aside>
         </section>
 
         <section>
           <img src="assets/mesos-simple.png"/>
 					<aside class="notes"></aside>
+        </section>
+
+        <section>
+          <h3>How would you write a sophisticated job-shop scheduler</h3>
+          <p class="fragment">A resource offer explains the <u>shape</u> of available resources</p>
+          <p class="fragment">X cpus with Y memory in rack Z connected to ...</p>
+          <p class="fragment">X cpus, Y bananas and Z apples</p>
+          <p class="fragment">Collection of offers represent a partial view of the global state</p>
+          <aside class="notes">
+            Global policy
+          </aside>
         </section>
 
         <section>
@@ -417,41 +404,18 @@ Overview slide (with wires) comes here
 				</section>
 
         <section>
-          <img src="assets/isolation-01.png"/>
-					<aside class="notes">
-          <p>The mesos slave isolates executors and their running tasks in
-          light-weight containers using linux cgroups.
-          Here it is marked with the dotted line.</p>
+          <h3>How does Mesos scale?</h3>
+          <p class="fragment">It is still a 1:N topology</p>
+          <p class="fragment">Masters only keep soft or limited replicated state</p>
+          <p class="fragment">All hard state is pushed to leaf nodes (slaves and frameworks)</p>
+          <p class="fragment">Only partial (detailed) cluster state is exposed</p>
+          <aside class="notes">
+            John Wilkes - Google Omega
+            Funded and helped design Mesos originally
 
-          <p>In this figure, a Hadoop TaskTracker executor and the Mesos default
-          executor are running Map/Reduce tasks and a ruby script
-          respectively.</p>
-
-          <p>Containers can grow and shrink as tasks run and complete.</p>
+            Keep it simple
           </aside>
-				</section>
- <!--
-        <section>
-          <img src="assets/isolation-02.png"/>
-					<aside class="notes"></aside>
-				</section>
--->
-        <section>
-          <img src="assets/isolation-03.png"/>
-					<aside class="notes"></aside>
-				</section>
-
-        <section>
-          <h2>Mesos has multiple ways of achiving resource isolation</h2>
-          <h3 class="fragment">Mesos Containerizer</h3>
-          <h3 class="fragment">External Containerizer</h3>
-          <h3 class="fragment">Coming up: First class Docker Containerizer!</h3>
         </section>
-        <!-- Add slides on the 3 different isolation mechanisms -->
-
-        <section>
-          <img style="width: 200%;" src="assets/beaker.gif"/>
-				</section>
 
         <section>
           <blockquote>
@@ -488,182 +452,50 @@ CTO)
 				</section>
 
         <section>
-          <div style="font-size: 9em;">
-            <div style="display: inline-block; opacity:0.5;">
-              <p><i class="fa fa-lightbulb-o"></i></p>
-              <p style="font-size: 30px;">The idea</p>
-            </div>
+          <img src="assets/isolation-01.png"/>
+					<aside class="notes">
+          <p>Dependency management with containers</p>
 
-            <div style="display: inline-block; opacity:0.5;">
-              <p><i class="fa fa-cogs"></i></p>
-              <p style="font-size: 30px;">How it works</p>
-            </div>
+          <p>Interface for isolation</p>
 
-            <div style="display: inline-block;">
-              <p><i class="fa fa-suitcase"></i></p>
-              <p style="font-size: 30px;">Who is using it</p>
-            </div>
-          </div>
+          <p>The mesos slave isolates executors and their running tasks in
+          light-weight containers using linux cgroups.
+          Here it is marked with the dotted line.</p>
+
+          <p>In this figure, a Hadoop TaskTracker executor and the Mesos default
+          executor are running Map/Reduce tasks and a ruby script
+          respectively.</p>
+
+          <p>Containers can grow and shrink as tasks run and complete.</p>
+          </aside>
+				</section>
+ <!--
+        <section>
+          <img src="assets/isolation-02.png"/>
+					<aside class="notes"></aside>
+				</section>
+-->
+        <section>
+          <img src="assets/isolation-03.png"/>
+					<aside class="notes"></aside>
+				</section>
+
+        <section>
+          <h2>Mesos has multiple ways of achiving resource isolation and monitoring</h2>
+          <h3 class="fragment">Mesos Containerizer (cgroups)</h3>
+          <h3 class="fragment">External Containerizer (Programmable)</h3>
+          <h3 class="fragment">Docker Containerizer</h3>
+        </section>
+
+        <section>
+          <p style="font-size: 100px;"><i class="fa fa-suitcase"></i></p>
+          <h2>Who is using it?</h2>
 					<aside class="notes"></aside>
 				</section>
 
         <section>
           <img src="assets/companies.png"/>
 					<aside class="notes"></aside>
-				</section>
-
-        <section>
-          <img src="assets/hubspot.png"/>
-				 	<aside class="notes">
-            HubSpot develops a software-as-a-service product for inbound
-            marketing, with features for social media, email, content
-            management, web analytics and search engine optimization.
-          </aside>
-				</section>
-
-        <section>
-          <blockquote>
-            &ldquo;HubSpot deploys 300 times a day on a minimal number of server
-instances by using Apache Mesos.&rdquo; &mdash; Elias Torres, HubSpot VP of Engineering
-          </blockquote>
-          <aside class="notes">
-          <p>Hubspot runs a mixture of web services, long-running processes,
-          one-off tasks, and scheduled jobs.
-          They have over 150 services running inside of Mesos, on hundreds of
-          servers inside Amazon EC2.</p>
-
-          <p>According to Elias Torres,
-          Hubspot deploys 300 times a day on a minimal number of server
-          instances by using Apache Mesos</p>
-          </aside>
-        </section>
-
-        <section>
-          <table style="font-size: 4em;">
-          <tr>
-          <td style="text-align: center;">
-            <div>
-              <p><i class="fa fa-clock-o"></i></p>
-              <p style="font-size: 25px;">Immediate access to cluster resources</p>
-            </div>
-          </td><td style="text-align: center;">
-            <div class="fragment">
-              <p><i class="fa fa-exclamation-triangle"></i></p>
-              <p style="font-size: 25px;">Failures are more transparent</p>
-            </div>
-          </td><td style="text-align: center;">
-            <div class="fragment">
-              <p><i class="fa fa-random"></i></p>
-              <p style="font-size: 25px;">Tasks are not tied to a single server</p>
-            </div>
-          </td><td style="text-align: center;">
-            <div class="fragment">
-              <p><i class="fa fa-tasks"></i></p>
-              <p style="font-size: 25px;">Improved utilization</p>
-            </div>
-          </td>
-          </tr>
-          </table>
-					<aside class="notes">
-          <p>Developers no longer need to understand the process for requisitioning
-          hardware or servers.</p>
-
-          <p>Increased reliability: Hardware failures are more transparent to
-          developers, as services are automatically replaced when tasks are
-          lost. In other words, developers are no longer paged because of a
-          simple hardware failure.</p>
-
-          <p>Resource utilization is improved which directly corresponds with
-          reducing costs. Services which were previously running on
-          over-provisioned hardware now use the exact amount of resources
-          requested.</p>
-          </aside>
-				</section>
-
-        <section>
-          <img src="assets/airbnb.png"/>
-					<aside class="notes">
-<p>Most of you are probably familiar with AirBnB.
-But for those of you who aren’t, it is an very successful startup in San
-Francisco that makes it very easy to share your apartment or be a guest in
-another persons home.</p>
-
-<p>But you may not realized that AirBnB is a very data driven company that
-processes petabytes of data.</p>
-
-<p>And they do this on top of Mesos.</p>
-          </aside>
-				</section>
-
-        <section>
-          <blockquote>
-            &ldquo;Ideally, [the idea is to] make it so a smaller number of engineers can have higher impact through automation on Mesos&rdquo; &mdash; Mike Curtis, Airbnb VP Engineering
-          </blockquote>
-        </section>
-
-        <section>
-          <table style="font-size: 4em;">
-          <tr>
-          <td style="text-align: center;">
-            <div>
-              <p><i class="fa fa-sitemap fa-rotate-180"></i></p>
-              <p style="font-size: 25px;">Multi-tenant clusters</p>
-            </div>
-          </td><td style="text-align: center;">
-            <div class="fragment">
-              <p><i class="fa fa-clock-o"></i></p>
-              <p style="font-size: 25px;">Small teams can move fast</p>
-            </div>
-          </td><td style="text-align: center;">
-            <div class="fragment">
-              <p><img src="assets/amazon.png"/></p>
-              <p style="font-size: 25px;">AWS-based infrastructure beyond just Hadoop</p>
-            </div>
-          </td>
-          </tr>
-          </table>
-
-					<aside class="notes">
-          <p>
-          Airbnb now runs a multi-tenant cluster with Hadoop coexisting with
-          Chronos, Spark, and Storm.
-          No longer needing independent Hadoop clusters.
-          </p>
-
-          <p>
-          It enables small teams to build distributed systems faster.
-          </p>
-
-          <p>
-          And all of this runs on hundreds of Amazon EC2 instances.
-          </p>
-
-          <p>
-          We want to thank Brenden Mathews from Airbnb for sharing data about
-          their Mesos cluster.
-          </p>
-          </aside>
-				</section>
-
-        <section>
-          <img src="assets/airbnb-stack.png"/>
-					<aside class="notes">
-          <p>
-          Only thing we were asked not to, was to share pictures and figures
-          so we have put together this rough and crude overview of their stack.
-          </p>
-
-          <p>
-          Notably, multiple Hadoops, Spark/Shark, Presto, Redis, Rails, and much
-          more, all on top of Marathon and Chronos.
-          </p>
-
-          <p>
-          Airbnb’s Mesos cluster is used for building search indices, reorder
-          search rankings; Rental pricing suggestion system; Trust and safety,
-          fraud detection; Business analytics
-          </p>
-          </aside>
 				</section>
 
         <section>
@@ -729,6 +561,13 @@ center efficiency.&rdquo; &mdash; Chris Fry, Former SVP of Engineering at Twitte
           part of their infrastructure, and rounds out our final section of the
           talk.</p>
           </aside>
+				</section>
+
+        <section data-background="assets/front-page.jpg">
+					<h2>Go launch a cluster</h2>
+          <img src="assets/dc.png"/>
+          <h3><a href="http://google.mesosphere.io">google.mesosphere.io</a></h3>
+					<aside class="notes"></aside>
 				</section>
 
         <section>
